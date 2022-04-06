@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/homestudent.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <script>
+      $(document).ready(function () {
+        $(".checkbtn").click(function () {
+          $("ul").toggleClass("show");
+        });
+      });
+    </script>
+
+    <title>Document</title>
+  </head>
+  <style>
+    .containerContent {
+      /* width: 100%;  */
+      /* height: 100%; */
+      background-color: #d8d4dc;
+      padding: 20px;
+      display: flex;
+      flex-direction: row;
+    }
+    .containerContent .inputContainer {
+      width: 100%;
+      height: 400px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-width: 20px black;
+    }
+    .containerContent .viewContainer {
+      width: 100%;
+      height: 530px;
+      background-color: #d8d4dc;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
+    #input{
+      background-color: #d8d4dc;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-width: 20px black;
+      height: 200px;
+      width: 500px;
+      margin-bottom: 10px;
+    }
+    #input input{
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-width: 20px black;
+    }
+    .form-group .form-control{
+      width: 40%;
+      height: 40px;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      background-color: gray;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+    .form-group .form-control:focus{
+      background-color: #d8d4dc;
+    }
+    .form-group .form-control:hover{
+      background-color: #d8d4dc;
+    }
+    .form-group .form-control:active{
+      background-color: #d8d4dc;
+    }
+    /* styles form scroll view*/
+
+    
+
+  </style>
+
+  <body>
+    <div class="layout">
+      <div class="header">
+        <input type="checkbox" id="check" />
+        <label for="check" class="checkbtn">
+          <i class="fa fa-bars"></i>
+        </label>
+      </div>
+      <div class="layout1">
+        <div class="menu">
+          <ul>
+            <li><a href="/account/indexStudent">Home</a></li>
+            <li><a href="">Upload file</a></li>
+            <li><a href="/file/fileSubmited">File Submitted</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+        <h1 style="text-align: center">Upload</h1>
+        <div class="containerContent">
+          <div class="inputContainer">
+            <form
+              class="mt-4 ml-3"
+              action="/file/upload"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="form-group" style="margin-left: 10px; color: #000">
+                <!-- <label for="exampleFormControlFile1">Files input</label> -->
+                
+                <div id="input">
+                  <input
+                  type="text"
+                  class="form-control-file"
+                  name="Description">
+                  <!-- Description need to connect API -->
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    name="filePath"
+                    multiple="multiple"
+                    id="filePath"
+                    required
+                  />
+                </div>
+                <input class="form-control" type="submit" value="Upload file" />
+              </div>
+            </form>
+          </div>
+          <div class="viewContainer">
+            <table class="containerTable">
+              <tr>
+                <th scope="col" style="font-size: 20px">File summitted:</th>
+                <th>Poster</th>
+                <th>Status</th>
+              </tr>
+
+              <% data.forEach(function(data) { %>
+              <tr>
+                <%if (data.filePathAnh) { %>
+                <td>
+                  <a href="/download/<%= data._id %>"> <%= data.nameFile %> </a>
+                </td>
+                <td>
+                  <img
+                    width="100px"
+                    height="100px"
+                    src="<%= data.filePathAnh %>"
+                    alt="photo for report"
+                  />
+                </td>
+                <td><%= data.status %></td>
+                <% } %>
+              </tr>
+              <% }); %> <% data.forEach(function(data) { %>
+              <tr>
+                <%if (!data.filePathAnh) { %>
+                <td>
+                  <a href="/download/<%= data._id %>"> <%= data.nameFile %> </a>
+                </td>
+                <td>No Poster</td>
+                <td><%= data.status %></td>
+                <% } %>
+              </tr>
+              <% }); %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>@University-2022</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Side Navigation Bar</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/addtofaculty.css">
+  <link rel="stylesheet" href="/css/homemanage.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>Sidebar</h2>
+      <ul>
+        <li><a href="/account/indexAdmin"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="/faculty/allfaculty"><i class="fas fa-user"></i>Category</a></li>
+        <li><a href="/manage/allManager"><i class="fas fa-project-diagram"></i>All Account</a></li>
+        <li><a href="/admin/createAccount"><i class="fas fa-blog"></i>Create account</a></li>
+        <li><a href="/faculty/create"><i class="fas fa-address-book"></i>Create Category</a></li>
+
+        <li id="popupsettime">Set Time</li>
+        <li><a href="/logout"><i class="fas fa-map-pin"></i>Log Out</a></li>
+      </ul>
+      <div class="social_media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="header">.</div>
+      <div class="info">
+        <% if((data2.length==0)&&(data.length==0)){ %>
+          <% } %>
+
+            <% if(data2.length !=0){ %>
+              <h1>Add QAC to Category</h2>
+                <table class="table">
+                  <tr class="table1">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                  </tr>
+                  <% } %>
+
+                    <% data2.forEach(function(data2) { %>
+                      <tr>
+                        <td>
+                          <p>
+                            <%= data2.username %>
+                          </p>
+                        </td>
+                        <td>
+                          <p>
+                            <%= data2.email %>
+                          </p>
+                        </td>
+                        <td>
+                          <p>
+                            <%= data2.role %>
+                          </p>
+                        </td>
+                        <td>
+                          <form action="/admin/doaddtoFaculty<%= data2._id %>" method="POST">
+                            <select name="facultyID">
+                              <% faculty.forEach(function(faculty) { %>
+                                <option value="<%= faculty.facultyID %>" name="facultyID">
+                                  <%= faculty.facultyID %>
+                                </option>
+                                <% }); %>
+                            </select>
+                            <input type="submit" onclick="Function()" value="Add to faculty" class="btn">
+                          </form>
+                        </td>
+                        <script>
+                          function Function() {
+                            alert("Successfully added")
+                          }
+                        </script>
+                      </tr>
+                      <% }); %>
+
+                </table>
+
+                <% if(data.length !=0){ %>
+                  <h1>Add Staff to faculty</h1>
+                  <table class="table">
+                    <tr class="table1">
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                    <% } %>
+                      <% data.forEach(function(data) { %>
+                        <tr>
+                          <td>
+                            <p>
+                              <%= data.username %>
+                            </p>
+                          </td>
+                          <td>
+                            <p>
+                              <%= data.email %>
+                            </p>
+                          </td>
+                          <td>
+                            <p>
+                              <%= data.role %>
+                            </p>
+                          </td>
+                          <td>
+                            <form action="/admin/doaddtoFaculty<%= data._id %>" method="POST">
+                              <select name="facultyID">
+                                <% faculty.forEach(function(faculty) { %>
+                                  <option value="<%= faculty.facultyID %>" name="facultyID">
+                                    <%= faculty.facultyID %>
+                                  </option>
+                                  <% }); %>
+                              </select>
+                              <input type="submit" onclick="Function()" value="Add to faculty" class="btn">
+                            </form>
+                          </td>
+                          <script>
+                            function Function() {
+                              alert("Successfully added")
+                            }
+                          </script>
+                        </tr>
+                        <% }); %>
+
+                  </table>
+
+                  <% if(data3.length !=0){ %>
+                    <h1>Add Guest to faculty</h1>
+                    <table class="table">
+                      <tr class="table1">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                      </tr>
+                      <% } %>
+                        <% data3.forEach(function(data3) { %>
+                          <tr>
+                            <td>
+                              <p>
+                                <%= data3.username %>
+                              </p>
+                            </td>
+                            <td>
+                              <p>
+                                <%= data3.email %>
+                              </p>
+                            </td>
+                            <td>
+                              <p>
+                                <%= data3.role %>
+                              </p>
+                            </td>
+                            <td>
+                              <form action="/admin/doaddtoFaculty<%= data3._id %>" method="POST">
+                                <select name="facultyID">
+                                  <% faculty.forEach(function(faculty) { %>
+                                    <option value="<%= faculty.facultyID %>" name="facultyID">
+                                      <%= faculty.facultyID %>
+                                    </option>
+                                    <% }); %>
+                                </select>
+                                <input type="submit" onclick="Function()" value="Add to faculty" class="btn">
+                              </form>
+                            </td>
+                            <script>
+                              function Function() {
+                                alert("Successfully added")
+                              }
+                            </script>
+                          </tr>
+                          <% }); %>
+
+                    </table>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p> Set deadlines for all students</p>
+      <input type="date" name="date" id="date">
+      <input type="time" name="time" id="time"><br>
+      <input type="submit" id="btnUpdate2" value="Submit">
+    </div>
+
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("popupsettime");
+    var btn2 = document.getElementById("btnUpdate2");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+    btn2.onclick = function () {
+      $.ajax({
+        url: "/manage/settime",
+        method: "post",
+        data: {
+          date: $("#date").val(),
+          time: $("#time").val(),
+        },
+        cache: false,
+        success: function (data) {
+          // data is the object that you send form the server by 
+          // res.jsonp();
+          // here data = {success : true}
+          // validate it
+          if (data['success']) {
+            alert("Settime success");
+          }
+        },
+        error: function () {
+          // some error handling part
+          alert("Oops! Something went wrong.");
+        }
+      });
+      modal.style.display = "none";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

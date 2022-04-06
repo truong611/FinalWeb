@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Side Navigation Bar</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/homemanage.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+  <!-- Downloaded chart.css -->
+  <link rel="stylesheet" href="chart.css">
+
+  <!-- RawGit CDN chart.css -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+
+
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>Sidebar</h2>
+      <ul>
+        <li><a href="/account/indexManager"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="/manage/allfaculty"><i class="fas fa-user"></i>All Category</a></li>
+        <li><a href="/manage/Statistical1"><i class="fas fa-user"></i>Dashboard</a></li>
+        <li><a href="/logout"><i class="fas fa-map-pin"></i>Log out&times;</a></li>
+      </ul>
+      <div class="social_media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="header"></div>
+      <div class="info">
+        {{#each data}}
+        <div id="piechart">
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        </div>
+
+        <div id="piechart2">
+          <script type="text/javascript2" src="https://www.gstatic.com/charts/loader.js"></script>
+        </div>
+
+        <script type="text/javascript">
+          // Load google charts
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          
+          // Draw the chart and set the chart values
+          
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+            ['Task', 'contributions'],
+            ['not rate', {{tongbaidanop}}-{{fail}}-{{sobaidapass}}],
+            ['Fail', {{fail}}],
+            ['Pass', {{sobaidapass}}]
+          ]);
+          
+            // Optional; add a title and set the width and height of the chart
+          
+            var options = {'title':'Statistics of Staff contributions', };
+          
+            // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+          }
+          
+          </script>
+          <div class="swapbar">
+            <script type="text/javascript">
+            // Load google charts
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            
+            // Draw the chart and set the chart values
+            
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+              ['Task', 'Staff'],
+              ['Number of staff upload file', {{soHocsinhnopbai}}],
+              ['Number of staff not upload file', {{hocsinhcuakhoa}}-{{soHocsinhnopbai}}]
+            ]);
+            
+              // Optional; add a title and set the width and height of the chart
+              var options = {'title':'Number of Staff contributing articles', };
+            
+              // Display the chart inside the <div> element with id="piechart"
+              var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+              chart.draw(data, options);
+            }
+            </script>
+            
+            {{/each}}
+                  </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

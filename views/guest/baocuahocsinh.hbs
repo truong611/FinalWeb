@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Side Navigation Bar</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/homemanage.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+  <title>Document</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Sidebar</h2>
+        <ul>
+            <li><a href="/account/indexGuest"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="/logout"><i class="fas fa-user"></i>Log out &times;</a></li>
+
+        </ul> 
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+        <div class="header">Staff contributions</div>  
+        <div class="info">
+          <form action="/file/abc" method="post" name="">
+            <input type="hidden" name="hobby" value="." />
+            <table class="table">
+              
+              {{!-- <div class="swapbtn">
+                <input type="submit" id="btn" value="Download" />
+                <input type="button" class="btn" id="allornone" name="allornone" onclick='UnSelectAll()'
+                  value="Unselect All" />
+                <input type="button" class="btn" id="allornone" name="allornone" onclick='selectAll()'
+                  value="Select All" />
+              </div> --}}
+              {{!-- <th class="col1">Chose</th> --}}
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+              {{#each data}}
+              <tr>
+                {{!-- <td>
+                  <input type="checkbox" name="hobby" value="{{filePathdoc}}" />
+                </td> --}}
+                <td>
+                  <a href="/download/{{_id}}"></a>{{nameFile}}</a>
+                </td>
+                <td>
+                  <p>{{studentemail}}</p>
+                </td>
+                <td>
+                  <a href="/guest/danhgiabaibao{{_id}}">View</a>
+                </td>
+              </tr>
+              {{/each}}
+              {{#each data2}}
+              <tr>
+                {{!-- <td>
+                  <input type="checkbox" name="hobby" value="{{filePathdoc2}}" />
+                </td> --}}
+                <td>
+                  <a href="/download2/{{_id}}">{{nameFile2}}</a>
+                </td>
+                <td>
+                  <p>{{studentemail}}</p>
+                </td>
+                <td>
+                  <a href="/manage/readcontribution{{_id}}">View</a>
+                </td>
+              </tr>
+              {{/each}}
+            </table>
+  
+          </form>
+      </div>
+    </div>
+</div>
+<script>
+  function selectAll() {
+    var items = document.getElementsByName('hobby');
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type == 'checkbox')
+        items[i].checked = true;
+    }
+  }
+  function UnSelectAll() {
+    var items = document.getElementsByName('hobby');
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type == 'checkbox')
+        items[i].checked = false;
+    }
+  }
+// Get the modal
+
+</script>
+</body>
+</html>

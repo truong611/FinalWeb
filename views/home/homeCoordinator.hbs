@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Side Navigation Bar</title>
+	<link rel="stylesheet" href="/css/layout.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+    <title>Document</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Sidebar</h2>
+        <ul>
+            <li><a href="/account/indexTeacher"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="/faculty/view{{account.facultyID}}"><i class="fas fa-user"></i>View Submit</a></li>
+            <li><a href="/logout"><i class="fas fa-map-pin"></i>Log out</a></li>
+        </ul> 
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+        <div class="header">Personal information</div>  
+        <div class="info">
+          <table class="table">
+            <tr>
+              <th>Username</th>
+              <td>{{account.username}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{account.email}}</td>
+            </tr>
+            <tr>
+              <th>Faculty Name</th>
+              <td>{{faculty.facultyname}}</td>
+            </tr>
+            <tr>
+              <th>Faculty</th>
+              <td>{{account.facultyID}}</td>
+            </tr>
+            <tr>
+              <th>Phone</th>
+              <td>{{account.phone}}</td>
+            </tr>
+            <tr>
+              <th>Birthday</th>
+              <td>{{account.birthday}}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{account.address}}</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+</div>
+
+</body>
+</html>

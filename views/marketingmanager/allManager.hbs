@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>All Account</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/homeadmin.css">
+  <link rel="stylesheet" href="/css/homemanage.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+  <title>Document</title>
+</head>
+<style>
+  .header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .header p {
+    font-size: 25px;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    font-weight: 300;
+    margin-left: 45%;
+  }
+
+  .header img {
+    margin-left: 10%;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .bodyRight {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-top: 10px;
+    border: 2px solid black;
+    height: 600px;
+    width: 60%;
+    background-color: white;
+    border-radius: 40px;
+  }
+
+  .bodyRight p {
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    font-weight: 300;
+    margin-left: 10%;
+    margin-top: 5px;
+  }
+
+  .bodyRight h3 {
+    font-size: 30px;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    font-weight: 600;
+    margin-left: 10%;
+    margin-top: 10px;
+  }
+
+  .bodyRight img {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+  }
+
+  .info {
+    display: flex;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    overflow: auto;
+    border-radius: 20px;
+    margin-top: 20px;
+    background-color: white;
+  }
+</style>
+
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>CMS</h2>
+      <ul>
+        <li><a href="/account/indexAdmin"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="/faculty/allfaculty"><i class="fas fa-user"></i>Category</a></li>
+        <li><a href="/manage/allManager"><i class="fas fa-project-diagram"></i>All Account</a></li>
+        <li><a href="/admin/createAccount"><i class="fas fa-blog"></i>Create account</a></li>
+        <li><a href="/faculty/create"><i class="fas fa-address-book"></i>Create Category</a></li>
+        
+        <li><a href="/logout"><i class="fas fa-map-pin"></i>Log out&times;</a></li>
+
+        <li id="popupsettime">Set Time</li>
+      </ul>
+      <div class="social_media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="header">
+        <img
+          src="https://media-exp1.licdn.com/dms/image/C4D16AQFi_ge0eaXLXA/profile-displaybackgroundimage-shrink_200_800/0/1621947470738?e=1649894400&v=beta&t=_dIkTACPLTPu6qF-iA-az61KJbAAjjxJkpvnqo2vUBQ"
+          alt="CMS" width="200" height="50">
+        <p>All Account</p>
+      </div>
+      <div class="body">
+        <div class="info">
+          <table class="table">
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th colspan="2">Action</th>
+            </tr>
+            {{#each account}}
+            <tr>
+              <td>{{username}}</td>
+              <td>{{email}}</td>
+              <td><a href="/manage/delete{{_id}}">Delete</a></td>
+              <td><a href="/manage/update{{_id}}">Update</a></td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+        <div class="bodyRight">
+          <div>
+            <h3>Account Roles</h3>
+            <p>The default role assigned to members in your organization and is used to specify <br>their main title or
+              position. It also provides a quick and easy way to group and manage<br> people, plan projects more
+              accurately, assign tasks, and develop resource plans</p>
+            <img
+              src="https://vantruongblog.com/wp-content/uploads/2021/06/account.jpeg"
+              alt="CMS" width="80%" height="60%">
+            <h3>About</h3>
+            <p>When roles are combined with Mavenlink's rate cards and resource planning capabilities,<br>
+              costs are automatically calculated for each task, which leads to more up-to-date budget<br>
+              forecasting and accurate billing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p> Set deadlines for all Staff</p>
+      <input type="date" name="date" id="date">
+      <input type="time" name="time" id="time"><br>
+      <input type="submit" id="btnUpdate2" value="Submit">
+    </div>
+
+  </div>
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("popupsettime");
+    var btn2 = document.getElementById("btnUpdate2");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+    btn2.onclick = function () {
+      $.ajax({
+        url: "/manage/settime",
+        method: "post",
+        data: {
+          date: $("#date").val(),
+          time: $("#time").val(),
+        },
+        cache: false,
+        success: function (data) {
+          // data is the object that you send form the server by 
+          // res.jsonp();
+          // here data = {success : true}
+          // validate it
+          if (data['success']) {
+            alert("Settime success");
+          }
+        },
+        error: function () {
+          // some error handling part
+          alert("Oops! Something went wrong.");
+        }
+      });
+      modal.style.display = "none";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

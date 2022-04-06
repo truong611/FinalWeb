@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #f3f5f9;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  width: 200px;
+  height: 100%;
+  background: #32776B;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.wrapper .sidebar h2{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wrapper .sidebar ul li{
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}    
+
+.wrapper .sidebar ul li a{
+  color: #bdb8d7;
+  display: block;
+}
+
+.wrapper .sidebar ul li a .fas{
+  width: 25px;
+}
+
+.wrapper .sidebar ul li:hover{
+  background-color: #594f8d;
+}
+    
+.wrapper .sidebar ul li:hover a{
+  color: #fff;
+}
+ 
+.wrapper .sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.wrapper .sidebar .social_media a{
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header{
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+.wrapper .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
+
+
+#popupsettime{
+  color: #fff;
+}
+.modal {
+  display: none; /* Hidden by default */
+   position: fixed; 
+  z-index: 5; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0; 
+   width: 100%; /* Full width */
+   height: 100%; 
+   overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto auto auto auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 280px;
+  height: 170px;
+  text-align: center;
+}
+
+.modal .modal-content input{
+  margin-top: 10px;
+}
+#btn1,#btnUpdate2{
+    font-size: 13px;
+    height: 30px;
+    width: 70px;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+#btnUpdate2{
+  margin-top: 10px;
+}
+#btn1,#btnUpdate2:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* The Close Button */
+.close {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -15px;
+  margin-right: -15px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.swapbtn{
+  width: auto;
+  height: auto;
+  margin-right: 6%;
+}
+.btn,#btn{
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #3b69e6;
+  color: #fff;
+  margin: 10px 10px auto auto;
+  float: right;
+}
+.btn:hover,#btn:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  
+  
+  .layout{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      margin: 0 auto 0 auto ;
+      z-index: 2;
+  }
+
+  .header{
+      width: 100%;
+      height: 6vh;
+      background-color: #3b69e6;
+      border-radius: 0;
+  }
+  .checkbtn{
+      font-size: 25px;
+      color: white;
+      float: left;
+      line-height: 50px;
+
+      cursor: pointer;
+      display: none;
+  }
+  .content h1{
+      font-size: 24px;
+  }
+
+
+  .checkbtn{
+      display: block;
+  }
+  .menu ul{
+    margin-top: 0px;
+      position: fixed;
+      height: 85vh;
+      background-color: black;
+      display: none;
+      text-align: center;
+      transition: all 0.5s;
+      z-index: 3;
+  }
+
+  #popupsettime{
+  font-size: 15px;
+}
+  .menu ul li a{
+      font-size: 15px;
+  }
+  ul.show {
+      display: block;
+  }
+  .footer{
+      width: 100%;
+  }
+  
+  .dk{
+      height: 60%;
+    }
+}

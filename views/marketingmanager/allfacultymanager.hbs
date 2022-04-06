@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Side Navigation Bar</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/homemanage.css">
+  <link rel="stylesheet" href="/css/allfaculty.css">
+  <link rel="stylesheet" href="/css/allfacultymanage.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>Sidebar</h2>
+      <ul>
+        <li><a href="/account/indexManager"></i>Home</a></li>
+        <li><a href="/manage/allfaculty"><i class="fas fa-user"></i>All Category</a></li>
+        <li><a href="/logout"><i class="fas fa-address-card"></i>Log out</a></li>
+      </ul>
+      <div class="social_media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="header"></div>
+      <div class="info">
+        {{#each faculty}}
+        <div class="card">
+          <h5>{{facultyname}}</h5>
+
+          <button><a href="/file/lol{{facultyID}}">View</a></button>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

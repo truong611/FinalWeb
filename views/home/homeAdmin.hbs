@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Side Navigation Bar</title>
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/homemanage.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.checkbtn').click(function () {
+        $('ul').toggleClass('show');
+      });
+    });
+  </script>
+</head>
+<style>
+  .header {
+    background-color: #f1f1f1;
+  }
+
+    {
+      {
+       !-- style search --
+    }
+  }
+
+  .header form {
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: 600px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 20%;
+  }
+
+  .header form input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+  }
+
+  .header form input:focus {
+    border: none;
+  }
+
+  .header form input::placeholder {
+    color: #ccc;
+  }
+
+  .header form input:focus::placeholder {
+    color: #ccc;
+  }
+
+  .header form input::-webkit-input-placeholder {
+    color: #ccc;
+  }
+
+  .header form input:focus::-webkit-input-placeholder {
+    color: #ccc;
+  }
+
+  .mid {
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #ccc;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .mid li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #ccc;
+  }
+
+  .mid .headerMid {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .bodyConatainer {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    border-width: 1px;
+    background-color: white;
+    align-items: center;
+  }
+
+  .contentContainer {
+    width: 100%;
+    height: 500px;
+    border-width: 1px;
+    background-color: white;
+    align-items: center;
+    overflow: auto;
+    margin-bottom: 18px;
+  }
+
+  .footerContainer {
+    width: 100%;
+    height: 100px;
+    border-width: 1px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .contentContainer li {
+    list-style: none;
+    display: flex;
+    width: 70%;
+    height: 100px;
+    background-color: #E9F1F5;
+    margin-top: 20px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .viewContainer {
+    width: 100%;
+    height: 100px;
+    border-width: 1px;
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .viewLeft {
+    width: 65%;
+    height: 100px;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .viewLeft h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+
+  .viewLeft p {
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .viewRight {
+    width: 30%;
+    height: 100px;
+    border-width: 1px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: auto;
+  }
+
+  .viewRight i {
+    font-size: 20px;
+
+  }
+</style>
+
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>CMS</h2>
+      <ul>
+        <li><a href="/account/indexAdmin"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="/faculty/allfaculty"><i class="fas fa-user"></i>Category</a></li>
+        <li><a href="/manage/allManager"><i class="fas fa-project-diagram"></i>All Account</a></li>
+        <li><a href="/admin/createAccount"><i class="fas fa-blog"></i>Create account</a></li>
+        <li><a href="/faculty/create"><i class="fas fa-address-book"></i>Create Category</a></li>
+        
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out &times;</a></li>
+      </ul>
+      <div class="social_media">
+        <a href="https://www.facebook.com/truongdo06"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="main_content">
+      <div class="header">
+        {{!-- search by name --}}
+        <form action="/admin/search" method="get">
+          <input type="text" name="search" placeholder="Search all . . .">
+          {{!-- <button type="submit"><i class="fas fa-search"></i></button> --}}
+      </div>
+      <div class="mid">
+        {{!-- view file --}}
+        <li><span class="headerMid">Category</span></li>
+        <li><span>Book</span></li>
+        <li><span>Code</span></li>
+        <li><span>Report</span></li>
+      </div>
+      <div class="bodyConatainer">
+        <div class="contentContainer">
+          <li class="viewContainer">
+            <div class="viewLeft">
+              <h5>Design: A Survival Guide for Beginners</h5>
+              <p>Time</p>
+            </div>
+            <div class="viewRight">
+              <i class="far fa-thumbs-up"></i>
+              <i class="far fa-thumbs-down"></i>
+              <i class="far fa-eye"></i>
+              <i class="fas fa-file-download"></i>
+            </div>
+          </li>
+          <li>
+            <div class="viewLeft">
+              <h5>Design: A Survival Guide for Beginners</h5>
+              <p>Time</p>
+            </div>
+            <div class="viewRight">
+              <i class="far fa-thumbs-up"></i>
+              <i class="far fa-thumbs-down"></i>
+              <i class="far fa-eye"></i>
+              <i class="fas fa-file-download"></i>
+            </div>
+          </li>
+          <li>
+            <div class="viewLeft">
+              <h5>Design: A Survival Guide for Beginners</h5>
+              <p>Time</p>
+            </div>
+            <div class="viewRight">
+              <i class="far fa-thumbs-up"></i>
+              <i class="far fa-thumbs-down"></i>
+              <i class="far fa-eye"></i>
+              <i class="fas fa-file-download"></i>
+            </div>
+          </li>
+          <li>
+            <div class="viewLeft">
+              <h5>Design: A Survival Guide for Beginners</h5>
+              <p>Time</p>
+            </div>
+            <div class="viewRight">
+              <i class="far fa-thumbs-up"></i>
+              <i class="far fa-thumbs-down"></i>
+              <i class="far fa-eye"></i>
+              <i class="fas fa-file-download"></i>
+            </div>
+          </li>
+         
+
+        </div>
+        <div class="footerContainer">
+          <p>Group 3 &copy; 2022</p>
+        </div>
+      </div>
+      <div class="info">
+        {{!-- <table class="table">
+          <tr>
+            <th>Username</th>
+            <td>{{account.username}}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{account.email}}</td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td>09111771189</td>
+          </tr>
+          <tr>
+            <th>Birthday</th>
+            <td>1/1/2000</td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>390 sao mai</td>
+          </tr>
+        </table>--}}
+
+
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p> Set deadlines for all Staff</p>
+            <input type="date" name="date" id="date">
+            <input type="time" name="time" id="time"><br>
+            <input type="submit" id="btnUpdate2" value="Submit">
+          </div>
+
+          <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("popupsettime");
+            var btn2 = document.getElementById("btnUpdate2");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal 
+            btn.onclick = function () {
+              modal.style.display = "block";
+            }
+            btn2.onclick = function () {
+              $.ajax({
+                url: "/manage/settime",
+                method: "post",
+                data: {
+                  date: $("#date").val(),
+                  time: $("#time").val(),
+                },
+                cache: false,
+                success: function (data) {
+                  // data is the object that you send form the server by 
+                  // res.jsonp();
+                  // here data = {success : true}
+                  // validate it
+                  if (data['success']) {
+                    alert("Settime success");
+                  }
+                },
+                error: function () {
+                  // some error handling part
+                  alert("Oops! Something went wrong.");
+                }
+              });
+              modal.style.display = "none";
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+              modal.style.display = "none";
+            }
+
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>
